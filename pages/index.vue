@@ -2,17 +2,17 @@
   <section class="container">
     <div>
       <div class="center">
-        <h1 id='result-box'>{{result}}</h1>
-        <h1 class='quest'>{{quest}}</h1>
-        <input class='answer' type="number" v-model='ur_answer' id="answer">
+        <div id='result-box'>{{result}}</div>
+        <div class='quest'>{{quest}}</div>
+        <input class='answer' type="number" v-model.number='ur_answer'>
       </div>
       <div>
         <button class='button--green' @click='calc'>こたえる！</button>
       </div>
       <br>
-      <div>
+      <!-- <div>
         <button class='button--green' @click='build_quest'>つぎの問題</button>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
@@ -39,15 +39,23 @@ export default {
     build_quest: function () {
       var l = Math.floor( Math.random() * 100 );
       var r = Math.floor( Math.random() * 100 );
-      this.quest = l+'+'+r
-      this.answer = l+r
+      var is_plus = Math.floor( Math.random() * 9 ) %2 ==0;
+
+      if(is_plus){
+        this.quest = l+'+'+r
+        this.answer = l+r
+      }
+      else{
+        this.quest = l+'-'+r
+        this.answer = l-r
+      }
+      this.ur_answer = ''
     },
     focues_in: function (selector) {
-      document.querySelector(selector).focus()
+      var el = document.querySelector(selector)
+      el.focus()
     },
     is_collect: function () {
-      console.log(this.ur_answer )
-      console.log( this.answer)
       return this.ur_answer == this.answer
     },
     calc () {
