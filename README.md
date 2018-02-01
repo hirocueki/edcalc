@@ -1,6 +1,7 @@
 # たのしい計算アプリ
 
 > Enjoy calculate
+算数が楽しくなるアプリ。
 
 ## Build Setup
 
