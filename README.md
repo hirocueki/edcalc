@@ -1,4 +1,4 @@
-# joycalc
+# たのしい計算アプリ
 
 > Enjoy calculate
 
